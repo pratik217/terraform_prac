@@ -5,6 +5,9 @@
 *.tfstate
 *.tfstate.*
 
+#aws files
+**/.aws/
+
 # Crash log files
 crash.log
 
