@@ -12,7 +12,7 @@ resource "aws_s3_bucket" "prodtf_prac"{
 resource "aws_default_vpc" "default"{}
 
 resource "aws_default_subnet" "default_az1"{
-    availability_zone = "us-west-2a"
+    availability_zone = "us-west-2c"
     tags = {
         "terraform" : "true"
     }
@@ -92,5 +92,11 @@ resource "aws_elb" "prod_web" {
         lb_protocol = "http"
         
     }
+
+    tags = {
+        "terraform" : "true"
+    } 
 }
+
+
 
