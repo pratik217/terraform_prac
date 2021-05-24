@@ -18,7 +18,7 @@ resource "aws_default_subnet" "default_az1"{
     }
 }
 resource "aws_default_subnet" "default_az2"{
-    availability_zone = "us-west-2c"
+    availability_zone = "us-west-2b"
     tags = {
         "terraform" : "true"
     }
@@ -86,10 +86,11 @@ resource "aws_elb" "prod_web" {
     security_groups = [aws_security_group.prod-web.id]
 
     listener {
-        instance_protocol = "http"
         instance_port = 80
-        lb_protocol = "http"
+        instance_protocol = "http"
         lb_port = 80
+        lb_protocol = "http"
+        
     }
 }
 
