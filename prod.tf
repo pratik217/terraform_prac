@@ -131,3 +131,17 @@ resource "aws_autoscaling_attachment" "prod_web" {
   autoscaling_group_name = aws_autoscaling_group.prod_web.id
   elb                    = aws_elb.prod_web.id
 }
+
+
+module "web_app" {
+  source = "./modules/web_app"
+
+  web_image_id         = var.web_image_id
+  web_instance_type    = var.web_instance_type
+  web_desired_capacity = var.web_desired_capacity
+  web_max_size         = var.web_max_size
+  web_min_size         = var.web_min_size
+  subnets              = [aws_default_subnet.default_az1.id,aws_default_subnet.default_az2.id]
+  security_groups      = [aws_security_group.prod_web.id]
+  web_app	       = "prod"
+}
