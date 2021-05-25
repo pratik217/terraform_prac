@@ -1,5 +1,5 @@
 resource "aws_elb" "this" {
-    name =  "${web-app}-web"
+    name =  "${var.web-app}-web"
     subnets  = var.subnets
     security_groups = var.security_groups
 
@@ -17,7 +17,7 @@ resource "aws_elb" "this" {
 }
 
 resource "aws_launch_template" "this"{
-    name_prefix ="${web-app}-web"
+    name_prefix ="${var.web-app}-web"
     image_id = "ami"
     instance_type ="t2.nano"
 
